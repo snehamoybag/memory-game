@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  border-bottom: 2px solid var(--clr-primary-400);
+}
+
+.header__btn-info {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  opacity: 0.75;
+}
+
+.header__btn-info:hover,
+.header__btn-info:focus {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.header__btn-info:active {
+  transform: scale(0.95);
+}
