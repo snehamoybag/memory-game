@@ -2,7 +2,7 @@ import "../styles/info-modal.css";
 
 const InfoModal = ({ isOpen = false, handleModalClose }) => {
   return (
-    <dialog className="info-modal" open={isOpen}>
+    <dialog id="info-modal" className="info-modal" open={isOpen}>
       <p className="info-modal__paragraph">
         Get points by clicking on an image but don&apos;t click on any more than
         once!
