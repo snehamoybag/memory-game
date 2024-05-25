@@ -1,0 +1,11 @@
+.footer {
+  text-align: center;
+  padding: 1em;
+  background-color: var(--clr-neutral-700);
+  border-top: 2px solid var(--clr-primary-400);
+  margin-top: 1rem;
+}
+
+.footer__credits {
+  font-size: var(--fs-200);
+}

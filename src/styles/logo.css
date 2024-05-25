@@ -5,7 +5,7 @@
 }
 
 .logo__img {
-  --size: 1.5rem;
+  --size: 1.5em;
   width: var(--size);
   height: var(--size);
   object-fit: contain;
@@ -13,7 +13,7 @@
 }
 
 .logo__text {
-  font-size: 1.25rem;
+  font-size: var(--fs-600);
   font-weight: var(--fw-bold);
   color: var(--clr-primary-400);
 }

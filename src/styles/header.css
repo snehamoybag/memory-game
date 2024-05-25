@@ -2,11 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 2em;
   border-bottom: 2px solid var(--clr-primary-400);
 }
 
 .header__btn-info {
+  --size: 1.5em;
+
+  width: var(--size);
+  height: var(--size);
   background-color: transparent;
   border: none;
   border-radius: 50%;
@@ -21,4 +26,17 @@
 
 .header__btn-info:active {
   transform: scale(0.95);
+}
+
+.header__btn-info > img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+@media (min-width: 40em) {
+  .header {
+    padding-left: 4em;
+    padding-right: 4em;
+  }
 }
