@@ -30,12 +30,22 @@
   );
 }
 
+.card__img,
+.card__placeholder {
+  border: 1px solid var(--clr-primary-400);
+  border-radius: 0.5rem;
+}
+
+.card__placeholder {
+  text-align: center;
+  color: var(--clr-neutral-100);
+  padding: 4em 1em;
+}
+
 .card__img {
   width: 100%;
   object-fit: contain;
   object-position: center;
-  border: 1px solid var(--clr-primary-400);
-  border-radius: 0.5rem;
 }
 
 .card__name {
