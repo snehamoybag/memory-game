@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../styles/card.css";
 
-const Card = ({ name, id }) => {
+const Card = ({ name, id, handleClick }) => {
   const [isPlaceholderActive, setIsPlaceholderActive] = useState(true);
 
   const handleImgLoad = () => setIsPlaceholderActive(false);
@@ -10,7 +10,7 @@ const Card = ({ name, id }) => {
   const imgAlt = `Photo of ${name}, a Pokemon`;
 
   return (
-    <button type="button" className="card">
+    <button type="button" className="card" onClick={handleClick}>
       {isPlaceholderActive && (
         <p className="card__placeholder">
           Image is loading, please wait a sec..
