@@ -13,7 +13,6 @@
 /* if '.board' has any '.card' on hover, */
 /* select all the other '.card' that are not hovered */
 .board:has(.card:hover) > .card:not(:hover) {
-  filter: blur(2px) grayscale(0.75);
   transform: scale(0.98);
 }
 
