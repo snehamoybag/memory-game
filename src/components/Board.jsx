@@ -4,12 +4,12 @@ import uppercasedFirstLetter from "../scripts/uppercasedFirstLetter";
 import "../styles/board.css";
 
 const Board = ({ cardsData = [], handleCardClick }) => {
-  const cardEls = cardsData.map((cardData) => {
+  const cardEls = cardsData.map((cardData, index) => {
     const { name, url } = cardData;
 
     return (
       <Card
-        key={name}
+        key={index + name} // to make sure we get complete re-render each time cards data gets shuffled randomly
         name={uppercasedFirstLetter(name)}
         id={getIdFromPokiUrl(url)}
         handleClick={() => handleCardClick(name)}
