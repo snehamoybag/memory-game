@@ -28,7 +28,8 @@ function App() {
       const data = await response.json(); // .json() is asynchronous
       const results = data.results;
 
-      setCardsData(results);
+      const randomShuffledResults = getShuffledArray(results);
+      setCardsData(randomShuffledResults);
     };
 
     apiData().catch((error) => alertApiErrors(error)); // calling the function with its error handler
