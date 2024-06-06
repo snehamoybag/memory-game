@@ -2,19 +2,31 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Board from "./components/Board";
 import Scoreboard from "./components/Scoreboard";
+import GameOverModal from "./components/GameOverModal";
 import Footer from "./components/Footer";
-import dummyData from "./data/dummyData.json";
+import getPokiApiUrl from "./scripts/getPokiApiUrl";
 import getShuffledArray from "./scripts/getShuffledArray";
 import "./App.css";
 
 function App() {
-  const defaultCardsData = getShuffledArray(
-    JSON.parse(JSON.stringify(dummyData)).results,
-  );
+  const [apiOffset, setApiOffset] = useState(0);
+  const pokemonLimit = 30;
+  const url = getPokiApiUrl(pokemonLimit, apiOffset);
 
-  const [cardsData, setCardsData] = useState(
-    Array.isArray(defaultCardsData) ? defaultCardsData : [],
-  );
+  const [cardsData, setCardsData] = useState([]);
+
+  // fetch data from api
+  useEffect(() => {
+    const apiData = async () => {
+      const response = await fetch(url);
+      const data = await response.json(); // .json() is asynchronous
+      const results = data.results;
+
+      setCardsData(results);
+    };
+
+    apiData(); // calling the function
+  }, [url]);
 
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
@@ -50,12 +62,24 @@ function App() {
     setCardsData((prevCardsData) => getShuffledArray(prevCardsData));
   };
 
+  const handlePlayAgain = () => {
+    setCurrentScore(0);
+    setIsGameOver(false);
+    setApiOffset((prevOffset) => prevOffset + pokemonLimit);
+  };
+
   return (
     <>
       <Header />
       <main>
         <Scoreboard currentScore={currentScore} bestScore={bestScore} />
         <Board cardsData={cardsData} handleCardClick={handleCardClick} />
+        <GameOverModal
+          isOpen={isGameOver}
+          currentScore={currentScore}
+          bestScore={bestScore}
+          handlePlayAgain={handlePlayAgain}
+        />
       </main>
       <Footer />
     </>
