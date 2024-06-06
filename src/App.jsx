@@ -6,6 +6,7 @@ import GameOverModal from "./components/GameOverModal";
 import Footer from "./components/Footer";
 import getPokiApiUrl from "./scripts/getPokiApiUrl";
 import getShuffledArray from "./scripts/getShuffledArray";
+import alertApiErrors from "./scripts/handleApiErrors";
 import "./App.css";
 
 function App() {
@@ -18,14 +19,19 @@ function App() {
   // fetch data from api
   useEffect(() => {
     const apiData = async () => {
-      const response = await fetch(url);
+      const response = await fetch(url, { mode: "cors" });
+
+      if (!response.ok) {
+        throw new Error(response.status);
+      }
+
       const data = await response.json(); // .json() is asynchronous
       const results = data.results;
 
       setCardsData(results);
     };
 
-    apiData(); // calling the function
+    apiData().catch((error) => alertApiErrors(error)); // calling the function with its error handler
   }, [url]);
 
   const [currentScore, setCurrentScore] = useState(0);

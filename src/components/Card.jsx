@@ -17,6 +17,7 @@ const Card = ({ name, id, handleClick }) => {
         </p>
       )}
 
+      {/**/}
       <img
         src={imgUrl}
         alt={imgAlt}
