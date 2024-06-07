@@ -8,17 +8,22 @@ import getPokiApiUrl from "./scripts/getPokiApiUrl";
 import getShuffledArray from "./scripts/getShuffledArray";
 import alertApiErrors from "./scripts/handleApiErrors";
 import "./App.css";
+import Loader from "./components/Loader";
 
 function App() {
   const [apiOffset, setApiOffset] = useState(0);
   const pokemonLimit = 30;
   const url = getPokiApiUrl(pokemonLimit, apiOffset);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [cardsData, setCardsData] = useState([]);
 
   // fetch data from api
   useEffect(() => {
     const apiData = async () => {
+      setIsLoading(true);
+
       const response = await fetch(url, { mode: "cors" });
 
       if (!response.ok) {
@@ -32,7 +37,14 @@ function App() {
       setCardsData(randomShuffledResults);
     };
 
-    apiData().catch((error) => alertApiErrors(error)); // calling the function with its error handler
+    apiData() // calling the function
+      .catch((error) => alertApiErrors(error)) // handle if fetch fails with errors
+      .finally(() =>
+        // remove loading screen after 1sec
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1000),
+      );
   }, [url]);
 
   const [currentScore, setCurrentScore] = useState(0);
@@ -75,10 +87,13 @@ function App() {
     setApiOffset((prevOffset) => prevOffset + pokemonLimit);
   };
 
+  console.log("rendered");
+
   return (
     <>
       <Header />
       <main>
+        {isLoading && <Loader />}
         <Scoreboard currentScore={currentScore} bestScore={bestScore} />
         <Board cardsData={cardsData} handleCardClick={handleCardClick} />
         <GameOverModal
