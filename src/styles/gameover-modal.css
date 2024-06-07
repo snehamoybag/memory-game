@@ -1,0 +1,46 @@
+.gameover-modal {
+  text-align: center;
+}
+
+.gameover-modal__title {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-bold);
+  color: var(--clr-primary-400);
+}
+
+.gameover-modal__sub-title {
+  margin-bottom: 1em;
+}
+
+.gameover-modal__score {
+  margin-bottom: 0.5em;
+}
+
+.gameover-modal__score > small {
+  display: block;
+  font-size: var(--fs-200);
+  color: var(--clr-primary-400);
+}
+
+.gameover-modal__btn {
+  font-weight: var(--fw-bold);
+  padding: 0.35em 1.25em;
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-700);
+  border: 1px solid var(--clr-neutral-600);
+  border-radius: 0.5rem;
+  opacity: 0.9;
+}
+
+.gameover-modal__btn:hover,
+.gameover-modal__btn:focus {
+  cursor: pointer;
+  transform: scale(101%);
+  box-shadow: 5px 5px 5px hsla(0, 0%, 0%, 0.25);
+  opacity: 1;
+}
+
+.gameover-modal__btn:active {
+  transform: scale(95%);
+  box-shadow: none;
+}
