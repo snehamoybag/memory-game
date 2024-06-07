@@ -1,4 +1,4 @@
-import logoImg from "/icons/lightbulb-circle.svg";
+import logoImg from "/images/pikachumask.png";
 import infoIcon from "/icons/info-icon.svg";
 import InfoModal from "./InfoModal";
 import { useState } from "react";

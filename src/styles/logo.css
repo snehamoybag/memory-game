@@ -9,7 +9,7 @@
   width: var(--size);
   height: var(--size);
   object-fit: contain;
-  object-position: center;
+  object-position: top;
 }
 
 .logo__text {
