@@ -87,8 +87,6 @@ function App() {
     setApiOffset((prevOffset) => prevOffset + pokemonLimit);
   };
 
-  console.log("rendered");
-
   return (
     <>
       <Header />
